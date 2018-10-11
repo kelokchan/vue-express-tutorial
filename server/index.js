@@ -9,6 +9,7 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const posts = require('./routes/api/posts');
+app.use('/api/posts', posts);
 
 // Handle production
 if (process.env.NODE_ENV === 'production') {
@@ -20,7 +21,6 @@ if (process.env.NODE_ENV === 'production') {
   app.get(/.*/, (req, res) => res.sendFile(__dirname + '/public/index.html'));
 }
 
-app.use('/api/posts', posts);
 
 const port = process.env.PORT || 5000;
 
